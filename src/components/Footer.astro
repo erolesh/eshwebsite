@@ -1,0 +1,105 @@
+---
+const currentYear = new Date().getFullYear();
+
+const serviceLinks = [
+  { label: 'Heizungsinstallation', href: '/leistungen#heizung' },
+  { label: 'Heizungswartung', href: '/leistungen#wartung' },
+  { label: 'Badsanierung', href: '/leistungen#bad' },
+  { label: 'Rohrbruch & Notdienst', href: '/leistungen#notdienst' },
+];
+
+const legalLinks = [
+  { label: 'Impressum', href: '/impressum' },
+  { label: 'Datenschutz', href: '/datenschutz' },
+];
+
+const cities = ['Hürth', 'Köln', 'Frechen', 'Kerpen', 'Brühl', 'Erftstadt', 'Bergheim'];
+---
+
+<footer class="bg-primary text-white mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <!-- Brand -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <img 
+            src="/logo.jpeg" 
+            alt="ESH Haustechnik Logo" 
+            class="h-12 w-auto object-contain"
+            loading="lazy"
+          />
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Ihr zuverlässiger Partner für Heizung, Sanitär und Badsanierung in Hürth, Köln und der gesamten Region.
+        </p>
+        <address class="not-italic text-sm text-gray-300 space-y-1">
+          <p>Elbingstr 2</p>
+          <p>50354 Hürth</p>
+          <p>
+            <a href="tel:015565258799" class="hover:text-accent transition-colors duration-300" aria-label="Telefon">01556 5258799</a>
+          </p>
+          <p>
+            <a href="mailto:Info@eshhaustechnik.de" class="hover:text-accent transition-colors duration-300" aria-label="E-Mail">Info@eshhaustechnik.de</a>
+          </p>
+        </address>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Leistungen</h3>
+        <ul class="space-y-2">
+          {serviceLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-300 hover:text-accent transition-colors duration-300 text-sm" aria-label={link.label}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Service Area (Local SEO) -->
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Einsatzgebiet</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+          Als Ihr Heizungsbauer, Klempner und Badsanierer sind wir in der gesamten Region Köln für Sie da:
+        </p>
+        <ul class="space-y-2">
+          {cities.map((city) => (
+            <li class="text-gray-300 text-sm">Heizung & Sanitär {city}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal / Contact -->
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Rechtliches</h3>
+        <ul class="space-y-2 mb-6">
+          {legalLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-300 hover:text-accent transition-colors duration-300 text-sm" aria-label={link.label}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="/kontakt"
+          class="inline-flex items-center justify-center bg-accent text-white px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+          aria-label="Kontakt aufnehmen"
+        >
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-400 text-sm text-center sm:text-left">
+        © {currentYear} ESH Haustechnik – Erol Saybak. Alle Rechte vorbehalten.
+      </p>
+      <p class="text-gray-500 text-xs text-center sm:text-right">
+        Einzelunternehmen · Elbingstr 2 · 50354 Hürth
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = 'Datenschutz | ESH Haustechnik – Heizungsbauer & Sanitär Hürth';
+const pageDescription = 'Informationen zum Datenschutz auf der Website von ESH Haustechnik. Erfahren Sie, wie wir Ihre Daten schützen. Ihr Heizungsbauer und Klempner für Heizung, Sanitär und Badsanierung in Hürth und Köln.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <main class="flex-grow">
+    <section class="bg-primary py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Datenschutzerklärung</h1>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg text-gray-600">
+          <p class="mb-6">
+            Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TMG). In dieser Datenschutzerklärung informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">1. Verantwortlicher</h2>
+          <p class="mb-6">
+            <strong>ESH Haustechnik</strong><br />
+            Erol Saybak<br />
+            Elbingstr 2<br />
+            50354 Hürth<br />
+            E-Mail: <a href="mailto:Info@eshhaustechnik.de" class="text-accent hover:underline">Info@eshhaustechnik.de</a><br />
+            Telefon: <a href="tel:015565258799" class="text-accent hover:underline">01556 5258799</a>
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">2. Hosting</h2>
+          <p class="mb-6">
+            Diese Website wird bei Netlify gehostet. Beim Besuch unserer Website erhebt Netlify automatisch technische Informationen (z.B. IP-Adresse, Browsertyp, Zeitpunkt des Zugriffs) in sogenannten Server-Log-Dateien. Diese Daten werden ausschließlich zur Sicherstellung eines störungsfreien Betriebs der Seite verwendet und nicht mit anderen Datenquellen zusammengeführt.
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">3. Kontaktformular</h2>
+          <p class="mb-6">
+            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+          </p>
+          <p class="mb-6">
+            Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen.
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">4. Cookies</h2>
+          <p class="mb-6">
+            Unsere Website verwendet ausschließlich technisch notwendige Cookies sowie ein Cookie-Banner zur Speicherung Ihrer Einwilligungspräferenzen. Es werden keine Tracking- oder Analyse-Cookies ohne Ihre ausdrückliche Zustimmung gesetzt.
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">5. Ihre Rechte</h2>
+          <p class="mb-6">
+            Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich bei der zuständigen Aufsichtsbehörde beschweren.
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">6. Änderungen dieser Datenschutzerklärung</h2>
+          <p class="mb-6">
+            Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen.
+          </p>
+
+          <p class="text-sm text-gray-500 mt-10">
+            Stand: März 2026
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

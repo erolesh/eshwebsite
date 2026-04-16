@@ -1,0 +1,38 @@
+---
+export interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  ariaLabel?: string;
+}
+
+const { href, variant = 'primary', size = 'md', type = 'button', class: className = '', ariaLabel } = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent';
+
+const variantClasses = {
+  primary: 'bg-accent text-white hover:bg-primary',
+  secondary: 'bg-primary text-white hover:bg-accent',
+  outline: 'border-2 border-accent text-accent hover:bg-accent hover:text-white',
+};
+
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes} aria-label={ariaLabel} role="button">
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes} aria-label={ariaLabel}>
+    <slot />
+  </button>
+)}

@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const { title, description, ogImage = '/images/og-default.jpg', canonical = Astro.url.pathname } = Astro.props;
+const siteUrl = 'https://eshhaustechnik.de';
+const fullCanonical = `${siteUrl}${canonical}`;
+const fullOgImage = `${siteUrl}${ogImage}`;
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "Plumber", "HVACBusiness"],
+  "name": "ESH Haustechnik",
+  "description": "Ihr Heizungsbauer, Klempner und Experte für Heizung, Sanitär, Badsanierung und Badrenovierung in Hürth, Köln und Umgebung. Professionelle Heizungsreparatur, Heizungsnotdienst, Installation und Wartung durch Erol Saybak.",
+  "url": siteUrl,
+  "telephone": "+4915565258799",
+  "email": "Info@eshhaustechnik.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Elbingstr 2",
+    "addressLocality": "Hürth",
+    "postalCode": "50354",
+    "addressCountry": "DE"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Hürth" },
+    { "@type": "City", "name": "Köln" },
+    { "@type": "City", "name": "Frechen" },
+    { "@type": "City", "name": "Kerpen" },
+    { "@type": "City", "name": "Brühl" },
+    { "@type": "City", "name": "Erftstadt" },
+    { "@type": "City", "name": "Bergheim" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "€€",
+  "image": fullOgImage
+};
+---
+
+<!DOCTYPE html>
+<html lang="de-DE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#132c3d" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={fullCanonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ESH Haustechnik" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={fullCanonical} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+    <slot />
+    <StickyMobileCTA />
+    <CookieBanner />
+  </body>
+</html>
