@@ -28,7 +28,7 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
 ---
 
 {href ? (
-  <a href={href} class={classes} aria-label={ariaLabel} role="button">
+  <a href={href} class={classes} aria-label={ariaLabel}>
     <slot />
   </a>
 ) : (

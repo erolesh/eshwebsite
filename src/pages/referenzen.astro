@@ -38,7 +38,7 @@ const projects = [
 <Layout title={pageTitle} description={pageDescription}>
   <Header />
 
-  <main>
+  <main id="main-content">
     <!-- Page Header -->
     <section class="bg-primary py-16 lg:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -64,6 +64,8 @@ const projects = [
                 <img 
                   src={project.image} 
                   alt={`${project.title} in ${project.location}`}
+                  width="1408"
+                  height="768"
                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />

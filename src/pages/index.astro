@@ -42,13 +42,15 @@ const cities = ['Hürth', 'Köln', 'Frechen', 'Kerpen', 'Brühl', 'Erftstadt', '
 <Layout title={pageTitle} description={pageDescription}>
   <Header />
 
-  <main>
+  <main id="main-content">
     <!-- Hero -->
     <section class="relative bg-primary overflow-hidden">
       <div class="absolute inset-0">
         <img 
           src="/hero.jpg" 
           alt="ESH Haustechnik – Heizung und Sanitär in Hürth" 
+          width="1376"
+          height="768"
           class="w-full h-full object-cover"
           loading="eager"
           fetchpriority="high"
@@ -219,6 +221,8 @@ const cities = ['Hürth', 'Köln', 'Frechen', 'Kerpen', 'Brühl', 'Erftstadt', '
               <img 
                 src="/warumwir.jpg" 
                 alt="Erol Saybak bei der Arbeit – ESH Haustechnik" 
+                width="1024"
+                height="1024"
                 class="w-full h-full object-cover"
                 loading="lazy"
               />

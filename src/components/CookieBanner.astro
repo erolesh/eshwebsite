@@ -4,8 +4,10 @@
 <div
   id="cookie-banner"
   role="dialog"
+  aria-modal="true"
   aria-live="polite"
   aria-label="Cookie-Einwilligung"
+  tabindex="-1"
   class="fixed bottom-0 left-0 right-0 z-[60] bg-white border-t border-gray-200 shadow-2xl transform translate-y-full transition-transform duration-500"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
@@ -54,6 +56,7 @@
     if (!consent) {
       setTimeout(() => {
         banner.classList.remove('translate-y-full');
+        banner.focus();
       }, 500);
     }
 

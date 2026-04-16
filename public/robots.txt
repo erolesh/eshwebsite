@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eshhaustechnik.de/sitemap-index.xml

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+
+const pageTitle = '404 – Seite nicht gefunden | ESH Haustechnik';
+const pageDescription = 'Die angeforderte Seite konnte nicht gefunden werden. Zurück zur Startseite von ESH Haustechnik – Ihr Heizungsbauer und Sanitär-Experte in Hürth und Köln.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main id="main-content" class="flex-grow flex items-center justify-center bg-gray-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-6xl sm:text-8xl font-bold text-primary mb-4">404</h1>
+      <p class="text-2xl sm:text-3xl font-bold text-primary mb-4">Seite nicht gefunden</p>
+      <p class="text-gray-600 mb-8 max-w-md mx-auto">Die Seite, die Sie suchen, existiert leider nicht. Vielleicht haben Sie sich vertippt oder die Seite wurde verschoben.</p>
+      <Button href="/" variant="primary" size="lg" ariaLabel="Zurück zur Startseite">Zurück zur Startseite</Button>
+    </div>
+  </main>
+  <Footer />
+</Layout>
