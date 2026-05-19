@@ -1,0 +1,35 @@
+{
+  "company": {
+    "name": "ESH Haustechnik",
+    "owner": "Erol Saybak",
+    "legalForm": "Einzelunternehmen",
+    "street": "Elbingstr 2",
+    "zip": "50354",
+    "city": "Hürth",
+    "country": "DE"
+  },
+  "contact": {
+    "phoneDisplay": "01556 5258799",
+    "phoneLink": "+4915565258799",
+    "email": "Info@eshhaustechnik.de",
+    "whatsapp": "https://wa.me/4915565258799"
+  },
+  "openingHours": {
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "cities": [
+    "Hürth",
+    "Köln",
+    "Frechen",
+    "Kerpen",
+    "Brühl",
+    "Erftstadt",
+    "Bergheim"
+  ],
+  "seo": {
+    "ogImage": "/images/og-default.jpg",
+    "logo": "/logo.jpeg",
+    "priceRange": "€€"
+  }
+}

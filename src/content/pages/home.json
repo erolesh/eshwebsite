@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Heizungsbauer & Sanitär in Köln & Hürth | ESH Haustechnik | Badsanierung & Notdienst",
+    "description": "Ihr Heizungsbauer, Klempner und Sanitär-Experte für Heizungsreparatur, Badsanierung, Badrenovierung und 24h Heizungsnotdienst in Hürth, Köln und Umgebung. ESH Haustechnik – Erol Saybak. Kompetent, zuverlässig, fair. Jetzt anrufen!"
+  },
+  "hero": {
+    "badge": "Ihr Fachbetrieb für Heizung & Sanitär",
+    "title": "Heizungsbauer & Sanitär in Hürth und Köln",
+    "text": "Willkommen bei ESH Haustechnik. Wir sind Ihr zuverlässiger Heizungsbauer, Klempner und Partner für moderne Heizungsanlagen, Heizungsreparatur, professionelle Badsanierung, Badrenovierung und schnelle Hilfe bei Rohrbrüchen – persönlich, fair und aus einer Hand.",
+    "image": "/hero.jpg",
+    "imageAlt": "ESH Haustechnik – Heizung und Sanitär in Hürth",
+    "primaryButton": "Jetzt anrufen",
+    "secondaryButton": "Kontakt aufnehmen"
+  },
+  "trustBar": [
+    {
+      "title": "Fachgerechte Ausführung",
+      "subtitle": "Qualität aus Meisterhand"
+    },
+    {
+      "title": "Termintreue",
+      "subtitle": "Pünktlich & zuverlässig"
+    },
+    {
+      "title": "Lokaler Ansprechpartner",
+      "subtitle": "Aus Hürth für die Region"
+    }
+  ],
+  "emergency": {
+    "title": "Heizungsausfall oder Rohrbruch?",
+    "subtitle": "Schnelle Hilfe im Notfall – wir sind für Sie da.",
+    "buttonText": "01556 5258799"
+  },
+  "services": {
+    "header": {
+      "title": "Unsere Leistungen für Ihr Zuhause",
+      "subtitle": "Von der ersten Beratung bis zur fertigen Installation – wir begleiten Sie bei allen Fragen rund um Heizung, Sanitär und moderne Bäder."
+    },
+    "items": [
+      {
+        "title": "Heizungsinstallation",
+        "description": "Von der modernen Gasheizung bis zur energieeffizienten Wärmepumpe – wir planen und installieren Ihre neue Heizungsanlage fachgerecht und termintreu.",
+        "image": "/leistung1.jpg",
+        "href": "/leistungen#heizung"
+      },
+      {
+        "title": "Heizungswartung",
+        "description": "Regelmäßige Wartung verlängert die Lebensdauer Ihrer Anlage, senkt die Heizkosten und sorgt für zuverlässige Wärme an kalten Tagen.",
+        "image": "/leistung2.jpg",
+        "href": "/leistungen#wartung"
+      },
+      {
+        "title": "Badsanierung",
+        "description": "Wir verwandeln Ihr altes Bad in eine moderne Wohlfühloase – von der Planung über die Installation bis zum fertigen Ergebnis aus einer Hand.",
+        "image": "/leistung3.jpg",
+        "href": "/leistungen#bad"
+      },
+      {
+        "title": "Rohrbruch & Notdienst",
+        "description": "Wasserrohrbruch oder Heizungsausfall? Unser schneller Kundendienst ist für Sie da – kompetente Störungsbeseitigung rund um Hürth und Köln.",
+        "image": "/leistung4.jpg",
+        "href": "/leistungen#notdienst"
+      }
+    ],
+    "buttonText": "Alle Leistungen ansehen"
+  },
+  "whyUs": {
+    "title": "Warum ESH Haustechnik?",
+    "paragraph1": "Als inhabergeführter Handwerksbetrieb und Heizungsbauer aus Hürth legen wir Wert auf persönliche Beratung, saubere Arbeit und ehrliche Preise. Bei uns gibt es keine Überraschungen – nur handwerkliche Qualität, auf die Sie sich verlassen können.",
+    "paragraph2": "Egal, ob Sie eine neue Heizungsanlage planen, eine Heizungsreparatur benötigen, Ihr Bad modernisieren möchten oder schnelle Hilfe bei einem Rohrbruch brauchen: Wir kümmern uns um Ihr Anliegen mit Engagement und Fachwissen.",
+    "usps": [
+      "Persönliche Beratung vor Ort",
+      "Transparente Kosten ohne versteckte Aufschläge",
+      "Moderne, energieeffiziente Lösungen",
+      "Schneller Kundendienst in der Region Köln"
+    ],
+    "image": "/warumwir.jpg",
+    "imageAlt": "Erol Saybak bei der Arbeit – ESH Haustechnik"
+  },
+  "localSeo": {
+    "header": {
+      "title": "Ihr Heizungs- und Sanitärinstallateur in der Region",
+      "subtitle": "Wir sind für Sie in Hürth und allen umliegenden Städten im Raum Köln unterwegs."
+    },
+    "text": "Sie suchen einen erfahrenen Heizungsbauer oder einen kompetenten Partner für Ihre Badsanierung in Hürth, Köln oder der Umgebung? Dann sind Sie bei ESH Haustechnik genau richtig. Wir kennen die Region, die örtlichen Gegebenheiten und die Anforderungen der Häuser hier – und bringen dieses Know-how in jedes Projekt ein."
+  },
+  "cta": {
+    "title": "Bereit für Ihr nächstes Projekt?",
+    "text": "Rufen Sie uns an oder schreiben Sie uns eine Nachricht. Wir beraten Sie gerne unverbindlich.",
+    "primaryButton": "01556 5258799",
+    "secondaryButton": "Nachricht schreiben"
+  }
+}

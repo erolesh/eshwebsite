@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "title": "Leistungen | Heizungsbauer & Sanitär Köln/Hürth | ESH Haustechnik",
+    "description": "Heizungsbauer, Klempner und Badsanierung in Köln, Hürth und Umgebung. Professionelle Heizungsreparatur, Heizungsnotdienst, Badrenovierung, Wärmepumpen-Installation und Rohrbruch-Hilfe. Erfahren Sie mehr über das Leistungsspektrum von ESH Haustechnik."
+  },
+  "header": {
+    "title": "Unsere Leistungen als Heizungsbauer & Sanitär-Experte",
+    "text": "Von der Planung bis zur Fertigstellung – wir bieten Ihnen alle Dienstleistungen rund um Heizung, Sanitär, Heizungsreparatur, Badsanierung und Badrenovierung aus einer Hand."
+  },
+  "sections": [
+    {
+      "id": "heizung",
+      "badge": "Heizungstechnik",
+      "title": "Heizungsinstallation, Heizungsreparatur & Modernisierung",
+      "paragraph1": "Eine moderne Heizungsanlage ist die Basis für niedrige Energiekosten und ein behagliches Zuhause. Als Ihr Heizungsbauer in Hürth, Köln und Umgebung beraten wir Sie umfassend zu den Möglichkeiten – von der klassischen Gasheizung über die effiziente Brennwerttechnik bis hin zu zukunftssicheren Wärmepumpen.",
+      "paragraph2": "Wir kümmern uns um die komplette Installation, Heizungsreparatur und Heizungswartung: von der Auswahl des richtigen Geräts über die fachgerechte Verrohrung bis zur Inbetriebnahme und Einweisung.",
+      "features": [
+        "Neuinstallation & Austausch von Heizungsanlagen",
+        "Heizungsreparatur & Heizungsnotdienst",
+        "Wärmepumpen, Gasheizungen & Hybridlösungen",
+        "Hydraulischer Abgleich"
+      ],
+      "image": "/leistung1.jpg",
+      "imageAlt": "Heizungsinstallation durch ESH Haustechnik"
+    },
+    {
+      "id": "wartung",
+      "badge": "Wartung & Service",
+      "title": "Heizungswartung, Kundendienst & Klempner-Service",
+      "paragraph1": "Regelmäßige Heizungswartung schützt Ihre Anlage vor Ausfällen, spart Energie und verlängert die Lebensdauer deutlich. Wir führen Wartungen für alle gängigen Hersteller durch und dokumentieren alles ordnungsgemäß.",
+      "paragraph2": "Bei Störungen, Heizungsausfällen oder ungewöhnlichen Geräuschen sind wir als Ihr Klempner und Heizungsbauer schnell vor Ort. Unser Kundendienst in Hürth, Frechen, Kerpen, Brühl, Erftstadt und Bergheim sorgt dafür, dass Ihre Heizung wieder einwandfrei läuft.",
+      "features": [
+        "Jährliche Heizungswartung",
+        "Störungsbeseitigung",
+        "Ersatzteilbeschaffung",
+        "24h-Notdienst bei Ausfällen"
+      ],
+      "image": "/leistung2.jpg",
+      "imageAlt": "Heizungswartung durch ESH Haustechnik"
+    },
+    {
+      "id": "bad",
+      "badge": "Sanitär & Bad",
+      "title": "Badsanierung, Badrenovierung & Badmodernisierung",
+      "paragraph1": "Ihr Bad sollte mehr sein als nur funktional – es sollte ein Ort der Entspannung sein. Wir realisieren Ihre Badsanierung und Badrenovierung in Hürth, Köln und der Region von der ersten Idee bis zum fertigen Traumbad.",
+      "paragraph2": "Dabei achten wir auf eine sorgfältige Planung, fachgerechte Entwässerung, dichte Verkleidungen und die Installation hochwertiger Sanitärarmaturen. Ob komplette Badmodernisierung, barrierefreies Bad sanieren oder gezielte Teilsanierung – wir finden die passende Lösung für Ihr Budget.",
+      "features": [
+        "Komplette Badsanierung",
+        "Barrierefreie Umbauten",
+        "Fliesen- & Bodenarbeiten",
+        "Armaturen- & WC-Montage"
+      ],
+      "image": "/leistung3.jpg",
+      "imageAlt": "Badsanierung durch ESH Haustechnik"
+    },
+    {
+      "id": "notdienst",
+      "badge": "Notdienst",
+      "title": "Rohrbruch, Wasserschaden, Heizungsnotdienst & Abflussreinigung",
+      "paragraph1": "Ein Rohrbruch, eine verstopfte Leitung oder ein Heizungsausfall kann schnell zur Belastung werden. In solchen Fällen zählt jede Minute. Unser Heizungsnotdienst und Klempner-Service ist für Sie in Hürth, Köln, Frechen, Kerpen, Brühl, Erftstadt und Bergheim im Einsatz.",
+      "paragraph2": "Wir finden die Ursache, schließen das Leck fachgerecht, beseitigen Verstopfungen und sorgen dafür, dass Ihre Heizung oder Wasserleitung schnell wieder funktioniert. Dabei arbeiten wir sauber, zügig und mit hochwertigen Materialien.",
+      "features": [
+        "Soforthilfe bei Rohrbrüchen",
+        "Heizungsausfall & Kaltwasser",
+        "Verstopfungen & Abflussstörungen",
+        "Wasserschäden in Wohnräumen"
+      ],
+      "image": "/leistung4.jpg",
+      "imageAlt": "Notdienst Einsatz durch ESH Haustechnik",
+      "noticeTitle": "Soforthilfe bei:",
+      "noticeItems": [
+        "Rohrbrüchen und undichten Leitungen",
+        "Heizungsausfällen und Kaltwasserproblemen",
+        "Verstopfungen und Abflussstörungen",
+        "Wasserschäden in Wohnräumen"
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Fragen zu unseren Leistungen?",
+    "text": "Wir beraten Sie gerne persönlich und erstellen Ihnen ein individuelles Angebot."
+  }
+}

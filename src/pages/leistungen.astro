@@ -3,9 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
+import globalData from '../content/settings/global.json';
+import leistungenData from '../content/pages/leistungen.json';
 
-const pageTitle = 'Leistungen | Heizungsbauer & Sanitär Köln/Hürth | ESH Haustechnik';
-const pageDescription = 'Heizungsbauer, Klempner und Badsanierung in Köln, Hürth und Umgebung. Professionelle Heizungsreparatur, Heizungsnotdienst, Badrenovierung, Wärmepumpen-Installation und Rohrbruch-Hilfe. Erfahren Sie mehr über das Leistungsspektrum von ESH Haustechnik.';
+const pageTitle = leistungenData.meta.title;
+const pageDescription = leistungenData.meta.description;
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -15,264 +17,87 @@ const pageDescription = 'Heizungsbauer, Klempner und Badsanierung in Köln, Hür
     <!-- Page Header -->
     <section class="bg-primary py-16 lg:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Unsere Leistungen als Heizungsbauer & Sanitär-Experte</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">{leistungenData.header.title}</h1>
         <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-          Von der Planung bis zur Fertigstellung – wir bieten Ihnen alle Dienstleistungen rund um Heizung, Sanitär, Heizungsreparatur, Badsanierung und Badrenovierung aus einer Hand.
+          {leistungenData.header.text}
         </p>
       </div>
     </section>
 
-    <!-- Heating -->
-    <section class="py-16 lg:py-24 bg-white" id="heizung">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
-              <img 
-                src="/leistung1.jpg" 
-                alt="Heizungsinstallation durch ESH Haustechnik"
-                width="1200"
-                height="896"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="inline-flex items-center gap-2 text-accent font-semibold text-sm mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-              </svg>
-              Heizungstechnik
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-5">Heizungsinstallation, Heizungsreparatur & Modernisierung</h2>
-            <div class="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Eine moderne Heizungsanlage ist die Basis für niedrige Energiekosten und ein behagliches Zuhause. Als Ihr Heizungsbauer in <strong>Hürth, Köln und Umgebung</strong> beraten wir Sie umfassend zu den Möglichkeiten – von der klassischen Gasheizung über die effiziente Brennwerttechnik bis hin zu zukunftssicheren Wärmepumpen.
-              </p>
-              <p>
-                Wir kümmern uns um die komplette Installation, Heizungsreparatur und Heizungswartung: von der Auswahl des richtigen Geräts über die fachgerechte Verrohrung bis zur Inbetriebnahme und Einweisung.
-              </p>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+    <!-- Sections -->
+    {leistungenData.sections.map((section, index) => {
+      const isEven = index % 2 === 0;
+      const bgClass = isEven ? 'bg-white' : 'bg-gray-50';
+      return (
+        <section class={`py-16 lg:py-24 ${bgClass}`} id={section.id}>
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div class={isEven ? 'order-2 lg:order-1' : ''}>
+                <div class="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
+                  <img 
+                    src={section.image} 
+                    alt={section.imageAlt}
+                    width="1200"
+                    height="896"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class={isEven ? 'order-1 lg:order-2' : ''}>
+                <div class="inline-flex items-center gap-2 text-accent font-semibold text-sm mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
                   </svg>
-                  <span>Neuinstallation & Austausch von Heizungsanlagen</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Heizungsreparatur & Heizungsnotdienst</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Wärmepumpen, Gasheizungen & Hybridlösungen</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Hydraulischer Abgleich</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Maintenance -->
-    <section class="py-16 lg:py-24 bg-gray-50" id="wartung">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-flex items-center gap-2 text-accent font-semibold text-sm mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              Wartung & Service
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-5">Heizungswartung, Kundendienst & Klempner-Service</h2>
-            <div class="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Regelmäßige Heizungswartung schützt Ihre Anlage vor Ausfällen, spart Energie und verlängert die Lebensdauer deutlich. Wir führen Wartungen für alle gängigen Hersteller durch und dokumentieren alles ordnungsgemäß.
-              </p>
-              <p>
-                Bei Störungen, Heizungsausfällen oder ungewöhnlichen Geräuschen sind wir als Ihr Klempner und Heizungsbauer schnell vor Ort. Unser Kundendienst in <strong>Hürth, Frechen, Kerpen, Brühl, Erftstadt und Bergheim</strong> sorgt dafür, dass Ihre Heizung wieder einwandfrei läuft.
-              </p>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Jährliche Heizungswartung</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Störungsbeseitigung</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Ersatzteilbeschaffung</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>24h-Notdienst bei Ausfällen</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden">
-              <img 
-                src="/leistung2.jpg" 
-                alt="Heizungswartung durch ESH Haustechnik"
-                width="1200"
-                height="896"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bathroom -->
-    <section class="py-16 lg:py-24 bg-white" id="bad">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
-              <img 
-                src="/leistung3.jpg" 
-                alt="Badsanierung durch ESH Haustechnik"
-                width="1200"
-                height="896"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="inline-flex items-center gap-2 text-accent font-semibold text-sm mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-              Sanitär & Bad
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-5">Badsanierung, Badrenovierung & Badmodernisierung</h2>
-            <div class="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Ihr Bad sollte mehr sein als nur funktional – es sollte ein Ort der Entspannung sein. Wir realisieren Ihre <strong>Badsanierung und Badrenovierung in Hürth, Köln und der Region</strong> von der ersten Idee bis zum fertigen Traumbad.
-              </p>
-              <p>
-                Dabei achten wir auf eine sorgfältige Planung, fachgerechte Entwässerung, dichte Verkleidungen und die Installation hochwertiger Sanitärarmaturen. Ob komplette Badmodernisierung, barrierefreies Bad sanieren oder gezielte Teilsanierung – wir finden die passende Lösung für Ihr Budget.
-              </p>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Komplette Badsanierung</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Barrierefreie Umbauten</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Fliesen- & Bodenarbeiten</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Armaturen- & WC-Montage</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Emergency -->
-    <section class="py-16 lg:py-24 bg-gray-50" id="notdienst">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-flex items-center gap-2 text-accent font-semibold text-sm mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Notdienst
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-5">Rohrbruch, Wasserschaden, Heizungsnotdienst & Abflussreinigung</h2>
-            <div class="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Ein Rohrbruch, eine verstopfte Leitung oder ein Heizungsausfall kann schnell zur Belastung werden. In solchen Fällen zählt jede Minute. Unser Heizungsnotdienst und Klempner-Service ist für Sie in <strong>Hürth, Köln, Frechen, Kerpen, Brühl, Erftstadt und Bergheim</strong> im Einsatz.
-              </p>
-              <p>
-                Wir finden die Ursache, schließen das Leck fachgerecht, beseitigen Verstopfungen und sorgen dafür, dass Ihre Heizung oder Wasserleitung schnell wieder funktioniert. Dabei arbeiten wir sauber, zügig und mit hochwertigen Materialien.
-              </p>
-              <div class="bg-white border-l-4 border-accent p-5 rounded-r-lg shadow-sm">
-                <p class="font-semibold text-primary mb-1">Soforthilfe bei:</p>
-                <ul class="space-y-1 text-gray-600">
-                  <li>• Rohrbrüchen und undichten Leitungen</li>
-                  <li>• Heizungsausfällen und Kaltwasserproblemen</li>
-                  <li>• Verstopfungen und Abflussstörungen</li>
-                  <li>• Wasserschäden in Wohnräumen</li>
-                </ul>
+                  {section.badge}
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-5">{section.title}</h2>
+                <div class="space-y-4 text-gray-600 leading-relaxed">
+                  <p>{section.paragraph1}</p>
+                  {section.paragraph2 && <p>{section.paragraph2}</p>}
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {section.features.map((feature) => (
+                      <li class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {section.noticeTitle && section.noticeItems && section.noticeItems.length > 0 && (
+                    <div class="bg-white border-l-4 border-accent p-5 rounded-r-lg shadow-sm">
+                      <p class="font-semibold text-primary mb-1">{section.noticeTitle}</p>
+                      <ul class="space-y-1 text-gray-600">
+                        {section.noticeItems.map((item) => (
+                          <li>• {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          <div>
-            <div class="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden">
-              <img 
-                src="/leistung4.jpg" 
-                alt="Notdienst Einsatz durch ESH Haustechnik"
-                width="1200"
-                height="896"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      );
+    })}
 
     <!-- CTA -->
     <section class="py-16 lg:py-24 bg-primary">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Fragen zu unseren Leistungen?
+          {leistungenData.cta.title}
         </h2>
         <p class="text-lg text-gray-300 mb-8">
-          Wir beraten Sie gerne persönlich und erstellen Ihnen ein individuelles Angebot.
+          {leistungenData.cta.text}
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href="tel:015565258799" variant="primary" size="lg" class="bg-accent hover:bg-white hover:text-primary" ariaLabel="Jetzt anrufen">
+          <Button href={'tel:' + globalData.contact.phoneLink} variant="primary" size="lg" class="bg-accent hover:bg-white hover:text-primary" ariaLabel="Jetzt anrufen">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            01556 5258799
+            {globalData.contact.phoneDisplay}
           </Button>
           <Button href="/kontakt" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary" ariaLabel="Kontakt aufnehmen">
             Anfrage senden

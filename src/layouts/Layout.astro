@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import globalData from '../content/settings/global.json';
 
 export interface Props {
   title: string;
@@ -10,44 +11,36 @@ export interface Props {
   canonical?: string;
 }
 
-const { title, description, ogImage = '/images/og-default.jpg', canonical = Astro.url.pathname } = Astro.props;
+const { title, description, ogImage, canonical = Astro.url.pathname } = Astro.props;
 const siteUrl = 'https://eshhaustechnik.de';
 const fullCanonical = `${siteUrl}${canonical}`;
-const fullOgImage = `${siteUrl}${ogImage}`;
+const fullOgImage = `${siteUrl}${ogImage || globalData.seo.ogImage}`;
 
 const schemaOrg = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "Plumber", "HVACBusiness"],
-  "name": "ESH Haustechnik",
+  "name": globalData.company.name,
   "description": "Ihr Heizungsbauer, Klempner und Experte für Heizung, Sanitär, Badsanierung und Badrenovierung in Hürth, Köln und Umgebung. Professionelle Heizungsreparatur, Heizungsnotdienst, Installation und Wartung durch Erol Saybak.",
   "url": siteUrl,
-  "telephone": "+4915565258799",
-  "email": "Info@eshhaustechnik.de",
+  "telephone": globalData.contact.phoneLink,
+  "email": globalData.contact.email,
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Elbingstr 2",
-    "addressLocality": "Hürth",
-    "postalCode": "50354",
-    "addressCountry": "DE"
+    "streetAddress": globalData.company.street,
+    "addressLocality": globalData.company.city,
+    "postalCode": globalData.company.zip,
+    "addressCountry": globalData.company.country
   },
-  "areaServed": [
-    { "@type": "City", "name": "Hürth" },
-    { "@type": "City", "name": "Köln" },
-    { "@type": "City", "name": "Frechen" },
-    { "@type": "City", "name": "Kerpen" },
-    { "@type": "City", "name": "Brühl" },
-    { "@type": "City", "name": "Erftstadt" },
-    { "@type": "City", "name": "Bergheim" }
-  ],
+  "areaServed": globalData.cities.map(city => ({ "@type": "City", "name": city })),
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "08:00",
-      "closes": "18:00"
+      "opens": globalData.openingHours.opens,
+      "closes": globalData.openingHours.closes
     }
   ],
-  "priceRange": "€€",
+  "priceRange": globalData.seo.priceRange,
   "image": fullOgImage
 };
 ---
@@ -67,7 +60,7 @@ const schemaOrg = {
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="ESH Haustechnik" />
+    <meta property="og:site_name" content={globalData.company.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={fullCanonical} />

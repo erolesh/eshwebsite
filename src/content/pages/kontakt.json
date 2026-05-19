@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "Kontakt | Heizungsbauer & Sanitär Köln/Hürth | ESH Haustechnik",
+    "description": "Kontaktieren Sie ESH Haustechnik – Ihr Heizungsbauer, Klempner und Badsanierer für Heizungsreparatur, Badrenovierung und Heizungsnotdienst in Hürth, Köln und Umgebung. Rufen Sie an, schreiben Sie per WhatsApp oder nutzen Sie unser Kontaktformular."
+  },
+  "header": {
+    "title": "Kontaktieren Sie Ihren Heizungsbauer & Klempner",
+    "text": "Wir freuen uns auf Ihre Nachricht. Rufen Sie uns an, schreiben Sie uns oder füllen Sie das Formular aus – wir melden uns schnellstmöglich bei Ihnen."
+  },
+  "contactInfo": {
+    "title": "Direkter Kontakt",
+    "text": "Egal ob Heizungsausfall, Heizungsreparatur, Badsanierung, Badrenovierung oder eine allgemeine Anfrage – wir sind als Ihr Heizungsbauer und Klempner in Hürth, Köln und der Region für Sie da. Nutzen Sie eine der folgenden Kontaktmöglichkeiten oder füllen Sie das Formular aus.",
+    "mapButton": "Karte anzeigen",
+    "mapNotice": "Durch das Laden stimmen Sie der Datenübermittlung an Google Maps zu."
+  },
+  "form": {
+    "title": "Schreiben Sie uns",
+    "text": "Füllen Sie das Formular aus. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+    "labelName": "Name",
+    "placeholderName": "Max Mustermann",
+    "labelPhone": "Telefon",
+    "placeholderPhone": "0151 23456789",
+    "labelEmail": "E-Mail",
+    "placeholderEmail": "max@beispiel.de",
+    "labelService": "Leistung",
+    "labelMessage": "Nachricht",
+    "placeholderMessage": "Beschreiben Sie kurz Ihr Anliegen...",
+    "privacyText": "Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu.",
+    "submitButton": "Nachricht absenden",
+    "successTitle": "Vielen Dank für Ihre Nachricht!",
+    "successText": "Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.",
+    "errorTitle": "Es ist ein Fehler aufgetreten.",
+    "errorText": "Bitte versuchen Sie es später erneut oder rufen Sie uns direkt an."
+  }
+}

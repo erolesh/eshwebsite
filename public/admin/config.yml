@@ -1,0 +1,428 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Neu: {{collection}} "{{slug}}"'
+    update: 'Update: {{collection}} "{{slug}}"'
+    delete: 'Löschung: {{collection}} "{{slug}}"'
+    uploadMedia: 'Bild-Upload: "{{path}}"'
+    deleteMedia: 'Bild-Löschung: "{{path}}"'
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://eshhaustechnik.de
+logo_url: /logo.jpeg
+locale: 'de'
+
+# Deaktiviert den Live-Preview (reiner Text-Editor)
+editor:
+  preview: false
+
+collections:
+  # ─────────────────────────────────────────────
+  # 1. Globale Einstellungen
+  # ─────────────────────────────────────────────
+  - name: "settings"
+    label: "⚙️ Globale Einstellungen"
+    editor: { preview: false }
+    files:
+      - file: "src/content/settings/global.json"
+        name: "global"
+        label: "Unternehmensdaten, Kontakt & SEO"
+        fields:
+          - label: "Unternehmen"
+            name: "company"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Firmenname", name: "name", widget: "string" }
+              - { label: "Inhaber", name: "owner", widget: "string" }
+              - { label: "Rechtsform", name: "legalForm", widget: "string" }
+              - { label: "Straße", name: "street", widget: "string" }
+              - { label: "PLZ", name: "zip", widget: "string" }
+              - { label: "Stadt", name: "city", widget: "string" }
+              - { label: "Land (ISO-Code)", name: "country", widget: "string", default: "DE" }
+
+          - label: "Kontakt"
+            name: "contact"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Telefon (Anzeige)", name: "phoneDisplay", widget: "string" }
+              - { label: "Telefon (Link, z. B. +4915565258799)", name: "phoneLink", widget: "string" }
+              - { label: "E-Mail", name: "email", widget: "string" }
+              - { label: "WhatsApp-Link", name: "whatsapp", widget: "string" }
+
+          - label: "Öffnungszeiten"
+            name: "openingHours"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Von", name: "opens", widget: "string", default: "08:00" }
+              - { label: "Bis", name: "closes", widget: "string", default: "18:00" }
+
+          - label: "Einsatzgebiete (Städte)"
+            name: "cities"
+            widget: "list"
+            field: { label: "Stadt", name: "city", widget: "string" }
+
+          - label: "SEO & Branding"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "OG-Default-Bild", name: "ogImage", widget: "image" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Preisspanne (Schema.org)", name: "priceRange", widget: "string", default: "€€" }
+
+  # ─────────────────────────────────────────────
+  # 2. Startseite
+  # ─────────────────────────────────────────────
+  - name: "homepage"
+    label: "🏠 Startseite"
+    editor: { preview: false }
+    files:
+      - file: "src/content/pages/home.json"
+        name: "home"
+        label: "Startseite"
+        fields:
+          - label: "Meta-Daten"
+            name: "meta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Seitentitel", name: "title", widget: "string" }
+              - { label: "Meta-Beschreibung", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Badge-Text", name: "badge", widget: "string" }
+              - { label: "Überschrift (H1)", name: "title", widget: "string" }
+              - { label: "Intro-Text", name: "text", widget: "text" }
+              - { label: "Bild", name: "image", widget: "image" }
+              - { label: "Bild-Alt-Text", name: "imageAlt", widget: "string" }
+              - { label: "Primärer Button-Text", name: "primaryButton", widget: "string" }
+              - { label: "Sekundärer Button-Text", name: "secondaryButton", widget: "string" }
+
+          - label: "Trust-Bar (3 Items)"
+            name: "trustBar"
+            widget: "list"
+            min: 3
+            max: 3
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Untertitel", name: "subtitle", widget: "string" }
+
+          - label: "Notdienst-Banner"
+            name: "emergency"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Untertitel", name: "subtitle", widget: "string" }
+              - { label: "Button-Text", name: "buttonText", widget: "string" }
+
+          - label: "Services-Übersicht"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Section-Header"
+                name: "header"
+                widget: "object"
+                fields:
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Untertitel", name: "subtitle", widget: "text" }
+              - label: "Service-Karten"
+                name: "items"
+                widget: "list"
+                min: 1
+                max: 6
+                fields:
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Beschreibung", name: "description", widget: "text" }
+                  - { label: "Bild", name: "image", widget: "image" }
+                  - { label: "Link (z. B. /leistungen#heizung)", name: "href", widget: "string" }
+              - { label: "Button-Text", name: "buttonText", widget: "string" }
+
+          - label: "Warum ESH?"
+            name: "whyUs"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Überschrift (H2)", name: "title", widget: "string" }
+              - { label: "Absatz 1", name: "paragraph1", widget: "text" }
+              - { label: "Absatz 2", name: "paragraph2", widget: "text" }
+              - label: "USPs"
+                name: "usps"
+                widget: "list"
+                field: { label: "USP", name: "text", widget: "string" }
+              - { label: "Bild", name: "image", widget: "image" }
+              - { label: "Bild-Alt", name: "imageAlt", widget: "string" }
+
+          - label: "Local-SEO-Sektion"
+            name: "localSeo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Section-Header"
+                name: "header"
+                widget: "object"
+                fields:
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Untertitel", name: "subtitle", widget: "text" }
+              - { label: "Fließtext", name: "text", widget: "text" }
+
+          - label: "CTA-Sektion"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Überschrift", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Primärer Button", name: "primaryButton", widget: "string" }
+              - { label: "Sekundärer Button", name: "secondaryButton", widget: "string" }
+
+  # ─────────────────────────────────────────────
+  # 3. Leistungen
+  # ─────────────────────────────────────────────
+  - name: "leistungen"
+    label: "🔧 Leistungen"
+    editor: { preview: false }
+    files:
+      - file: "src/content/pages/leistungen.json"
+        name: "leistungen"
+        label: "Leistungen-Seite"
+        fields:
+          - label: "Meta-Daten"
+            name: "meta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Seitentitel", name: "title", widget: "string" }
+              - { label: "Meta-Beschreibung", name: "description", widget: "text" }
+
+          - label: "Page-Header"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "H1", name: "title", widget: "string" }
+              - { label: "Intro-Text", name: "text", widget: "text" }
+
+          - label: "Sektionen"
+            name: "sections"
+            widget: "list"
+            min: 1
+            max: 6
+            fields:
+              - { label: "ID (für Anker-Link, z. B. heizung)", name: "id", widget: "string" }
+              - { label: "Badge-Text", name: "badge", widget: "string" }
+              - { label: "Überschrift (H2)", name: "title", widget: "string" }
+              - { label: "Absatz 1", name: "paragraph1", widget: "text" }
+              - { label: "Absatz 2", name: "paragraph2", widget: "text", required: false }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "text", widget: "string" }
+              - { label: "Bild", name: "image", widget: "image" }
+              - { label: "Bild-Alt", name: "imageAlt", widget: "string" }
+              - { label: "Hinweis-Box Titel (optional)", name: "noticeTitle", widget: "string", required: false }
+              - label: "Hinweis-Box Punkte (optional)"
+                name: "noticeItems"
+                widget: "list"
+                required: false
+                field: { label: "Punkt", name: "text", widget: "string" }
+
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Überschrift", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+
+  # ─────────────────────────────────────────────
+  # 4. Referenzen (Meta)
+  # ─────────────────────────────────────────────
+  - name: "referenzen"
+    label: "📸 Referenzen (Seite)"
+    editor: { preview: false }
+    files:
+      - file: "src/content/pages/referenzen.json"
+        name: "referenzen"
+        label: "Referenzen-Seite"
+        fields:
+          - label: "Meta-Daten"
+            name: "meta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Seitentitel", name: "title", widget: "string" }
+              - { label: "Meta-Beschreibung", name: "description", widget: "text" }
+
+          - label: "Page-Header"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "H1", name: "title", widget: "string" }
+              - { label: "Intro-Text", name: "text", widget: "text" }
+
+          - label: "Projekte-Sektion"
+            name: "projects"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Section-Header"
+                name: "header"
+                widget: "object"
+                fields:
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Untertitel", name: "subtitle", widget: "text" }
+
+          - label: "Testimonials-Sektion"
+            name: "testimonials"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Section-Header"
+                name: "header"
+                widget: "object"
+                fields:
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Untertitel", name: "subtitle", widget: "text" }
+
+  # ─────────────────────────────────────────────
+  # 5. Projekte (dynamisch)
+  # ─────────────────────────────────────────────
+  - name: "projects"
+    label: "🏗️ Projekte"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    editor: { preview: false }
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Ort", name: "location", widget: "string" }
+      - { label: "Beschreibung", name: "description", widget: "text" }
+      - { label: "Bild", name: "image", widget: "image" }
+      - { label: "Bild-Alt-Text", name: "imageAlt", widget: "string", required: false }
+
+  # ─────────────────────────────────────────────
+  # 6. Kundenbewertungen (dynamisch)
+  # ─────────────────────────────────────────────
+  - name: "testimonials"
+    label: "⭐ Kundenbewertungen"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    editor: { preview: false }
+    fields:
+      - { label: "Zitat", name: "quote", widget: "text" }
+      - { label: "Autor", name: "author", widget: "string" }
+      - { label: "Ort", name: "location", widget: "string" }
+
+  # ─────────────────────────────────────────────
+  # 7. Kontakt
+  # ─────────────────────────────────────────────
+  - name: "kontakt"
+    label: "📞 Kontakt"
+    editor: { preview: false }
+    files:
+      - file: "src/content/pages/kontakt.json"
+        name: "kontakt"
+        label: "Kontakt-Seite"
+        fields:
+          - label: "Meta-Daten"
+            name: "meta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Seitentitel", name: "title", widget: "string" }
+              - { label: "Meta-Beschreibung", name: "description", widget: "text" }
+
+          - label: "Page-Header"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "H1", name: "title", widget: "string" }
+              - { label: "Intro-Text", name: "text", widget: "text" }
+
+          - label: "Kontakt-Infos"
+            name: "contactInfo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "H2", name: "title", widget: "string" }
+              - { label: "Beschreibung", name: "text", widget: "text" }
+              - { label: "Karten-Button-Text", name: "mapButton", widget: "string" }
+              - { label: "Karten-Hinweis", name: "mapNotice", widget: "text" }
+
+          - label: "Formular"
+            name: "form"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "H2", name: "title", widget: "string" }
+              - { label: "Beschreibung", name: "text", widget: "text" }
+              - { label: "Name-Label", name: "labelName", widget: "string" }
+              - { label: "Name-Placeholder", name: "placeholderName", widget: "string" }
+              - { label: "Telefon-Label", name: "labelPhone", widget: "string" }
+              - { label: "Telefon-Placeholder", name: "placeholderPhone", widget: "string" }
+              - { label: "E-Mail-Label", name: "labelEmail", widget: "string" }
+              - { label: "E-Mail-Placeholder", name: "placeholderEmail", widget: "string" }
+              - { label: "Leistung-Label", name: "labelService", widget: "string" }
+              - { label: "Nachricht-Label", name: "labelMessage", widget: "string" }
+              - { label: "Nachricht-Placeholder", name: "placeholderMessage", widget: "string" }
+              - { label: "Datenschutz-Text", name: "privacyText", widget: "text" }
+              - { label: "Absende-Button", name: "submitButton", widget: "string" }
+              - { label: "Erfolgsmeldung Titel", name: "successTitle", widget: "string" }
+              - { label: "Erfolgsmeldung Text", name: "successText", widget: "text" }
+              - { label: "Fehlermeldung Titel", name: "errorTitle", widget: "string" }
+              - { label: "Fehlermeldung Text", name: "errorText", widget: "text" }
+
+  # ─────────────────────────────────────────────
+  # 8. Impressum
+  # ─────────────────────────────────────────────
+  - name: "impressum"
+    label: "📋 Impressum"
+    editor: { preview: false }
+    files:
+      - file: "src/content/pages/impressum.md"
+        name: "impressum"
+        label: "Impressum"
+        fields:
+          - label: "Meta-Daten"
+            name: "meta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Seitentitel", name: "title", widget: "string" }
+              - { label: "Meta-Beschreibung", name: "description", widget: "text" }
+          - { label: "Inhalt", name: "body", widget: "markdown" }
+
+  # ─────────────────────────────────────────────
+  # 9. Datenschutz
+  # ─────────────────────────────────────────────
+  - name: "datenschutz"
+    label: "🔒 Datenschutz"
+    editor: { preview: false }
+    files:
+      - file: "src/content/pages/datenschutz.md"
+        name: "datenschutz"
+        label: "Datenschutzerklärung"
+        fields:
+          - label: "Meta-Daten"
+            name: "meta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Seitentitel", name: "title", widget: "string" }
+              - { label: "Meta-Beschreibung", name: "description", widget: "text" }
+          - { label: "Inhalt", name: "body", widget: "markdown" }

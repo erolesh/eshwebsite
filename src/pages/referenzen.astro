@@ -3,36 +3,18 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import referenzenData from '../content/pages/referenzen.json';
 
-const pageTitle = 'Referenzen | Badsanierung & Heizung Köln/Hürth | ESH Haustechnik';
-const pageDescription = 'Entdecken Sie ausgewählte Projekte von ESH Haustechnik. Von Heizungsinstallationen und Heizungsreparaturen bis zur kompletten Badsanierung und Badrenovierung in Hürth, Köln und Umgebung – Qualitätsarbeit aus Meisterhand.';
+const pageTitle = referenzenData.meta.title;
+const pageDescription = referenzenData.meta.description;
 
-const projects = [
-  {
-    title: 'Komplette Badsanierung',
-    location: 'Hürth',
-    description: 'Modernisierung eines Altbaubads mit neuen Fliesen, Dusche und Sanitärinstallation.',
-    image: '/ref1.jpg',
-  },
-  {
-    title: 'Heizungsaustausch',
-    location: 'Köln',
-    description: 'Austausch eines 20 Jahre alten Heizkessels gegen eine effiziente Brennwertheizung.',
-    image: '/ref2.jpg',
-  },
-  {
-    title: 'Rohrbruch-Reparatur',
-    location: 'Frechen',
-    description: 'Schnelle Schadensbeseitigung bei einem Wasserrohrbruch im Keller.',
-    image: '/ref3.jpg',
-  },
-  {
-    title: 'Badmodernisierung',
-    location: 'Kerpen',
-    description: 'Barrierefreier Umbau mit ebenerdiger Dusche und neuen Armaturen.',
-    image: '/ref4.jpg',
-  },
-];
+// Dynamische Projekte laden
+const projectModules = import.meta.glob('../content/projects/*.json', { eager: true });
+const projects = Object.values(projectModules).map((mod: any) => mod.default);
+
+// Dynamische Testimonials laden
+const testimonialModules = import.meta.glob('../content/testimonials/*.json', { eager: true });
+const testimonials = Object.values(testimonialModules).map((mod: any) => mod.default);
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -42,28 +24,28 @@ const projects = [
     <!-- Page Header -->
     <section class="bg-primary py-16 lg:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Referenzen – Badsanierung & Heizung</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">{referenzenData.header.title}</h1>
         <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-          Ein Auszug unserer Projekte in Hürth, Köln und der Region. Qualität, die Sie sehen können.
+          {referenzenData.header.text}
         </p>
       </div>
     </section>
 
-    <!-- Before/After Gallery -->
+    <!-- Projects Gallery -->
     <section class="py-16 lg:py-24 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          title="Vorher / Nachher – Unsere Projekte"
-          subtitle="Hier zeigen wir Ihnen einen Einblick in unsere abgeschlossenen Arbeiten."
+          title={referenzenData.projects.header.title}
+          subtitle={referenzenData.projects.header.subtitle}
         />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <article class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div class="aspect-[4/3] bg-gray-100 relative overflow-hidden">
                 <img 
                   src={project.image} 
-                  alt={`${project.title} in ${project.location}`}
+                  alt={project.imageAlt || `${project.title} in ${project.location}`}
                   width="1408"
                   height="768"
                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
@@ -88,49 +70,24 @@ const projects = [
     <section class="py-16 lg:py-24 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          title="Das sagen unsere Kunden"
-          subtitle="Ihre Zufriedenheit ist unser größtes Ziel."
+          title={referenzenData.testimonials.header.title}
+          subtitle={referenzenData.testimonials.header.subtitle}
         />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- TODO: Hier echtes Kunden-Zitat einfügen -->
-          <blockquote class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <div class="flex items-center gap-1 text-accent mb-4" aria-label="5 von 5 Sternen">
-              {[...Array(5)].map(() => (
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <p class="text-gray-600 italic mb-4">„Hier erscheint bald ein echtes Kundenfeedback zur Badsanierung.“</p>
-            <footer class="font-semibold text-primary text-sm">— Kunde aus Köln</footer>
-          </blockquote>
-
-          <!-- TODO: Hier echtes Kunden-Zitat einfügen -->
-          <blockquote class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <div class="flex items-center gap-1 text-accent mb-4" aria-label="5 von 5 Sternen">
-              {[...Array(5)].map(() => (
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <p class="text-gray-600 italic mb-4">„Hier erscheint bald ein echtes Kundenfeedback zur Heizungsinstallation.“</p>
-            <footer class="font-semibold text-primary text-sm">— Kunde aus Hürth</footer>
-          </blockquote>
-
-          <!-- TODO: Hier echtes Kunden-Zitat einfügen -->
-          <blockquote class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <div class="flex items-center gap-1 text-accent mb-4" aria-label="5 von 5 Sternen">
-              {[...Array(5)].map(() => (
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <p class="text-gray-600 italic mb-4">„Hier erscheint bald ein echtes Kundenfeedback zum Notdienst.“</p>
-            <footer class="font-semibold text-primary text-sm">— Kunde aus Frechen</footer>
-          </blockquote>
+          {testimonials.map((t) => (
+            <blockquote class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="flex items-center gap-1 text-accent mb-4" aria-label="5 von 5 Sternen">
+                {[...Array(5)].map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p class="text-gray-600 italic mb-4">„{t.quote}“</p>
+              <footer class="font-semibold text-primary text-sm">— {t.author}</footer>
+            </blockquote>
+          ))}
         </div>
       </div>
     </section>
