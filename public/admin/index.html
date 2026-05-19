@@ -6,11 +6,16 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Content Manager – ESH Haustechnik</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-  <body>
+
+    <!-- Decap CMS manuelle Initialisierung verhindert doppeltes init -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
+  </head>
+  <body>
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
@@ -26,9 +31,9 @@
         });
       }
 
-      // Decap CMS initialisieren (explizit, damit die config.yml geladen wird)
+      // Decap CMS explizit initialisieren (nur einmal)
       if (window.CMS) {
-        window.CMS.init({ load_config_file: true });
+        window.CMS.init();
       } else {
         console.error('Decap CMS konnte nicht geladen werden.');
         document.body.innerHTML = '<p style="padding:2rem;font-family:sans-serif;">❌ Fehler: Decap CMS konnte nicht geladen werden. Bitte prüfe die Browser-Konsole (F12 → Console).</p>';
