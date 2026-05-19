@@ -8,9 +8,31 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <script>
+      // Netlify Identity: Redirect nach Login zurück zu /admin/
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', function(user) {
+          if (!user) {
+            window.netlifyIdentity.on('login', function() {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+
+      // Decap CMS initialisieren (explizit, damit die config.yml geladen wird)
+      if (window.CMS) {
+        window.CMS.init({ load_config_file: true });
+      } else {
+        console.error('Decap CMS konnte nicht geladen werden.');
+        document.body.innerHTML = '<p style="padding:2rem;font-family:sans-serif;">❌ Fehler: Decap CMS konnte nicht geladen werden. Bitte prüfe die Browser-Konsole (F12 → Console).</p>';
+      }
+    </script>
   </body>
 </html>
